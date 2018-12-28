@@ -3,7 +3,7 @@ module IF_ID(new_content, instruction, newPC, clk, pwrite1);
 	input [31:0] instruction, newPC;
 	output [63:0] new_content;
 	reg [63:0] next;
-	always (@posedge clk) begin
+	always (@negedge clk) begin
 		if(pwrite1)
 			new_content <= {instruction, newPC};
 		else
