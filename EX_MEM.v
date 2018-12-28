@@ -6,7 +6,7 @@ module EX_MEM(new_content, control_signals, branch_target, zero, ALU_Output, rea
 	output [106:0] new_content;
 	reg [106:0] new_content;
 	
-	always (@posedge clk) begin
+	always (@negedge clk) begin
 		if(pwrite3)
 			new_content <= {destination_reg, read_Rt, ALU_Output, zero, branch_target, control_signals};
 		else
