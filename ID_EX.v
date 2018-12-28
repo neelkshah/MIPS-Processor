@@ -6,7 +6,7 @@ module ID_EX(new_content, control_signals, newPC, lower26, read_Rs, read_Rt, sig
 	output [163:0] new_content;
 	reg [163:0] new_content;
 	
-	always (@ posedge clk) begin
+	always (@ negedge clk) begin
 		if(pwrite2)
 			new_content <= {sign_extended32, read_Rs, read_Rt, lower26, newPC, control_signals};
 		else
