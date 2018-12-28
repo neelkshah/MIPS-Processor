@@ -3,7 +3,7 @@ module DataForwardingUnit(forwardA, forwardB, Rs2, Rt2, destreg3, destreg4, RegW
 	input [4:0] Rs2, Rt2, destreg3, destreg4;
 	output [1:0] forwardA, forwardB;
 	
-	always (@ posedge clk) begin
+	always (@ negedge clk) begin
 		if(RegWrite3 & (destreg3 != 0) & (destreg3 = Rs2))
 			forwardA <= 2'b10;
 		else if(RegWrite4 & (destreg4 != 0) & (destreg3 != Rs2) & (destreg4 = Rs2))
@@ -12,7 +12,7 @@ module DataForwardingUnit(forwardA, forwardB, Rs2, Rt2, destreg3, destreg4, RegW
 			forwardA <= 2'b00;
 	end
 	
-	always (@ posedge clk) begin
+	always (@ negedge clk) begin
 		if(RegWrite3 & (destreg3 != 0) & (destreg3 = Rt2))
 			forwardB <= 2'b10;
 		else if(RegWrite4 & (destreg4 != 0) & (destreg3 != Rt2) & (destreg4 = Rt2))
