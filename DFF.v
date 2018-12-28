@@ -3,7 +3,7 @@ module dff_async_clear(q, d, clk, reset);
 	output q;
 	reg q;
 	
-	always @ (negedge reset or posedge clk)
+	always @ (posedge reset or negedge clk)
 	begin
 		if (!reset) q <= 1'b0;
 		else q <= d;
